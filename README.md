@@ -120,17 +120,23 @@ git bisect skip $(git rev-list --grep irrelevant <good place> HEAD)
 커밋 메세지의 첫번째 줄인 제목 행은 변화에 대한 간결한 설명을 포함합니다.
 
 #### `<type>`에 들어갈 수 있는 항목들
-* feat (feature, 새로 추가된 것이나 특징)
-* fix (버그 수정)
-* docs (문서)
-* style (포매팅 수정, 들여쓰기 추가, …)
-* refactor
-* test (누락 테스트를 추가할 때)
-* chore (유지보수)
+* feat : 새로운 기능 추가
+* fix : 버그 수정
+* docs : 문서 관련
+* style : 스타일 변경 (포매팅 수정, 들여쓰기 추가, …)
+* refactor : 코드 리팩토링
+* test : 테스트 관련 코드
+* build : 빌드 관련 파일 수정
+* ci : CI 설정 파일 수정
+* perf : 성능 개선
+* chore : 그 외 자잘한 수정
+
+> 새로운 [Angular 9 규약](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#type)에서는 chore가 삭제되고, build, ci, perf가 추가되었습니다.
 
 ####  `<scope>`에 들어갈 수 있는 항목들
 어디가 변경되었는지, 변경된 부분은 모두 들어갈 수 있습니다.  
-예를 들어, $location, $browser, $compile, $rootScope, ngHref, ngClick, ngView, 등등...
+예를 들어, $location, $browser, $compile, $rootScope, ngHref, ngClick, ngView, 등등...  
+scope는 생략 가능합니다.
 > 이름이 들어가면 어디가 바뀌었는지 알기 쉽겠죠?
 > 함수가 변경되었으면 함수 이름이나.. 메소드가 추가되었으면 해당 클래스 이름을 넣으면 되겠네요.
 
