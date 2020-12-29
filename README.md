@@ -11,10 +11,10 @@
   * [중요하지 않은 커밋 식별](#-중요하지-않은-커밋-식별)
   * [히스토리 탐색 시 더 많은 정보 제공](#-히스토리를-조회할-때-더-많은-정보를-제공)
 * [커밋 메세지의 형식](#-커밋-메세지의-형식)
-  * [제목 행 (Subject Line)](#제목-행-subject-line)
+  * [커밋 메세지 헤더 (Commit Message Header)](#커밋-메세지-헤더-commit-message-header)
     * [`<type>`에 들어갈 수 있는 항목들](#type에-들어갈-수-있는-항목들)
     * [`<scope>`에 들어갈 수 있는 항목들](#scope에-들어갈-수-있는-항목들)
-    * [`<subject>` 제목 작성 시](#subject-제목-작성-시)
+    * [`<short summary>` 요약 설명](#short-summary-요약-설명)
   * [메세지 내용 (Message Body)](#메세지-내용-message-body)
   * [메세지 하단 (Message Footer)](#메세지-하단-message-footer)
     * [주요 변경 내역들 (Breaking Changes)](#주요-변경-내역들-breaking-changes)
@@ -101,7 +101,7 @@ git bisect skip $(git rev-list --grep irrelevant <good place> HEAD)
 ⚡ 커밋 메세지의 형식
 ----------------------------
 ```
-<type>(<scope>): <subject>
+<type>(<scope>): <short summary>
 <BLANK LINE>
 <body>
 <BLANK LINE>
@@ -115,9 +115,25 @@ git bisect skip $(git rev-list --grep irrelevant <good place> HEAD)
 > [IntelliJ IDEA의 Git Commit Template 플러그인](https://plugins.jetbrains.com/plugin/9861-git-commit-template)
 
 
-### 제목 행 (subject line)
-`<종류>(<범위>): <제목>`
-커밋 메세지의 첫번째 줄인 제목 행은 변화에 대한 간결한 설명을 포함합니다.
+### 커밋 메세지 헤더 (Commit Message Header)
+> [Angular 9 규약](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit-message-header)에서는 제목 행 (Subject Line)을 커밋 메세지 헤더 (Commit Message Header)로 정의했습니다.
+> 또한 subject를 short summary로 표현했습니다.
+```
+커밋 메세지 헤더
+<type>(<scope>): <short summary>
+  │       │             │
+  │       │             └─⫸ 명령문, 현재 시제로 작성합니다. 대문자를 사용하지 않으며, 마침표로 끝내지 않습니다.
+  │       │
+  │       └─⫸ Commit Scope: animations|bazel|benchpress|common|compiler|compiler-cli|core|
+  │                          elements|forms|http|language-service|localize|platform-browser|
+  │                          platform-browser-dynamic|platform-server|router|service-worker|
+  │                          upgrade|zone.js|packaging|changelog|dev-infra|docs-infra|migrations|
+  │                          ngcc|ve
+  │
+  └─⫸ Commit Type: build|ci|docs|feat|fix|perf|refactor|test
+The <type> and <summary> fields are mandatory, the (<scope>) field is optional.
+```
+커밋 메세지의 첫번째 줄인 커밋 메세지 헤더는 변화에 대한 간결한 설명을 포함합니다.
 
 #### `<type>`에 들어갈 수 있는 항목들
 * feat : 새로운 기능 추가
@@ -140,7 +156,7 @@ scope는 생략 가능합니다.
 > 이름이 들어가면 어디가 바뀌었는지 알기 쉽겠죠?
 > 함수가 변경되었으면 함수 이름이나.. 메소드가 추가되었으면 해당 클래스 이름을 넣으면 되겠네요.
 
-#### `<subject>` 제목 작성 시
+#### `<short summary>` 요약 설명
 * 명령문, 현재 시제로 작성합니다.
   > 예를 들어, 변경되었으면 : "change"를 사용합니다. "changed"나 "changes"를 사용하지 않습니다.
 * 첫글자를 대문자로 쓰지 마세요. 소문자로 쓰세요.
@@ -159,7 +175,30 @@ http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 모든 주요 변경 내역들은 다음과 함께 하단에 언급되어야 합니다.
 - 변경점 (description of the change)
 - 변경 사유 (justification)
-- 마이그레이션을 위한 주석 (migration notes)
+- 마이그레이션 지시 (migration instructions)
+
+#### 해결된 이슈 (Referencing Issues)
+
+해결된 이슈는 커밋 메세지 하단에 `Closes #<이슈번호>` 와 같이 기록되어야 합니다.
+```
+Closes #234
+```
+
+해결된 이슈가 여러개인 경우는 다음과 같이 쓸 수 있습니다.
+```
+Closes #123, #245, #992
+```
+
+> [Angular 9 규약](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit-message-footer)에서는 "Fixes" 키워드를 사용하기도 합니다
+
+```
+BREAKING CHANGE: <주요 변경 내역 요약>
+<BLANK LINE>
+<변경점 + 마이그레이션 지시>
+<BLANK LINE>
+<BLANK LINE>
+Fixes #<이슈번호>
+```
 
 ```
 BREAKING CHANGE: isolate scope bindings definition has changed and
@@ -190,17 +229,6 @@ BREAKING CHANGE: isolate scope bindings definition has changed and
     The removed `inject` wasn't generaly useful for directives so there should be no code using it.
 ```
 
-#### 해결된 이슈 (Referencing Issues)
-
-해결된 이슈는 커밋 메세지 하단에 Closes 키워드와 와 함께 기록되어야 합니다.
-```
-Closes #234
-```
-
-해결된 이슈가 여러개인 경우는 다음과 같이 쓸 수 있습니다.
-```
-Closes #123, #245, #992
-```
 
 예시
 --------
