@@ -2,7 +2,8 @@
 ==========================
 이 문서는 [the AngulerJS commit conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/)를 번역한 것입니다.
 > 🖋 번역 : [outstandingboy](https://github.com/outstanding1301)
-> 공부하면서 번역했습니다. 입맛대로 번역된 부분이나 오역이 있을 수 있습니다.
+> 공부하면서 번역했습니다. 입맛대로 번역된 부분이나 오역이 있을 수 있습니다.  
+> [Angular 9의 커밋 메세지 규약](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format)을 추가했습니다.
 
 ## 📌 목차
 
