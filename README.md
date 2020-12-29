@@ -4,6 +4,23 @@
 > 🖋 번역 : [outstandingboy](https://github.com/outstanding1301)
 > 공부하면서 번역했습니다. 입맛대로 번역된 부분이나 오역이 있을 수 있습니다.
 
+## 📌 목차
+
+* [목표](#-목표)
+* [CHANGELOG.md 생성](#-changelogmd-생성)
+  * [중요하지 않은 커밋 식별](#-중요하지-않은-커밋-식별)
+  * [히스토리 탐색 시 더 많은 정보 제공](#-히스토리를-조회할-때-더-많은-정보를-제공)
+* [커밋 메세지의 형식](#-커밋-메세지의-형식)
+  * [제목 행 (Subject Line)](#제목-행-subject-line)
+    * [`<type>`에 들어갈 수 있는 항목들](#type에-들어갈-수-있는-항목들)
+    * [`<scope>`에 들어갈 수 있는 항목들](#scope에-들어갈-수-있는-항목들)
+    * [`<subject>` 제목 작성 시](#subject-제목-작성-시)
+  * [메세지 내용 (Message Body)](#메세지-내용-message-body)
+  * [메세지 하단 (Message Footer)](#메세지-하단-message-footer)
+    * [주요 변경 내역들 (Breaking Changes)](#주요-변경-내역들-breaking-changes)
+    * [해결된 이슈 (Referencing Issues)](#해결된-이슈-referencing-issues)
+  * [예시](#예시)
+  
 ⚽ 목표
 -----
 ✔ 스크립트로 CHANGELOG.md를 작성할 수 있다.  
