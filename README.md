@@ -54,6 +54,10 @@ git log <last tag> HEAD --pretty=format:%s
 git log <last release> HEAD --grep feature
 ```
 
+> 🔨 CHANGELOG.md 를 생성하기 위한 도구  
+> - [github-changelog-generator](https://github.com/github-changelog-generator/github-changelog-generator)  
+> - [git-changelog-gradle-plugin](https://github.com/tomasbjerre/git-changelog-gradle-plugin)
+
 ### 😒 중요하지 않은 커밋 식별
 중요하지 않은 커밋은 주로 로직의 변화가 없는 커밋입니다.  
 예를 들면...
